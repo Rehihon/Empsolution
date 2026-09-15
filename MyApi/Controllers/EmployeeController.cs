@@ -46,10 +46,11 @@ namespace MyApi.Controllers
             return Ok(employee);
         }
 
-        [HttpPut("{EmployeeId}")]
-        public async Task<IActionResult> UpdateEmployeeRecord(int EmployeeId,  Employee request)
+        [HttpPut]
+        public async Task<IActionResult> UpdateEmployeeRecord(  Employee request)
         {
-            var employee = await _context.Employees.FindAsync(EmployeeId);
+            var Id = request.EmployeeId;
+            var employee = await _context.Employees.FindAsync(Id);
             var _request = request;
             
             if (employee == null)

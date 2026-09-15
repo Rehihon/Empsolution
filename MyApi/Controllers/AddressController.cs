@@ -32,9 +32,10 @@ public class AddressController : ControllerBase
             return Ok(address);
         }
 
-        [HttpPut("{AddressId}")]
-        public async Task<IActionResult> UpdateAddressRecord(int addressId, Address request)
+        [HttpPut]
+        public async Task<IActionResult> UpdateAddressRecord( Address request)
         {
+            var addressId = request.AddressId;
             var address = await _context.Address.FindAsync(addressId);
             if (address == null)
             {

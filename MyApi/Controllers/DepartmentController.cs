@@ -46,9 +46,10 @@ namespace MyApi.Controllers
             return Ok(department);
         }
 
-        [HttpPut("{DepID}")]
-        public async Task<IActionResult> UpdateDepartmentRecord(int depID, Department request )
+        [HttpPut]
+        public async Task<IActionResult> UpdateDepartmentRecord( Department request )
         {
+            var depID = request.DepID;
             var  Product = await _context.Department.FindAsync(depID);
             if (Product == null)
             {
