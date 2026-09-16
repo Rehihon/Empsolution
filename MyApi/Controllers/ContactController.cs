@@ -48,9 +48,10 @@ namespace MyApi.Controllers
             return Ok(contact);
         }
 
-        [HttpPut("{Id}")]
-        public async Task<IActionResult> UpdateContactRecord( int Id, Contact request)
+        [HttpPut]
+        public async Task<IActionResult> UpdateContactRecord( Contact request)
         {
+            var Id = request.ContactId;
             var contact = await _context.Contact.FindAsync(Id);
             if (contact == null)
                 return NotFound();
